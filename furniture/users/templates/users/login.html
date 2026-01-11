@@ -1,0 +1,42 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+
+        <div class="login-section">
+            <div class="login-header">
+                <h1 class="login-title">Авторизация</h1>
+            </div>
+
+            <form action="{% url 'login' %}" method="post" class="login-form">
+              {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Имя пользователя</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}" class="form-label">Пароль</label>
+                    {{ form.password }}
+                </div>
+
+                <button type="submit" class="login-button">Войти</button>
+            </form>
+
+            <div class="forgot-password">
+                <a href="#">Forget password?</a>
+            </div>
+
+            <div class="signup-link">
+                <a href="{% url 'register' %}">Нужен аккаунт? Зарегистрируйся!</a>
+            </div>
+
+            <div class="picture-login">
+                <img src="{% static 'img/LoginPct.png' %}" alt="">
+            </div>
+
+
+        </div>
+
+
+{% endblock %}

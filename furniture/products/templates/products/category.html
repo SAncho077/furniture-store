@@ -1,0 +1,12 @@
+ <div class="catalog">
+            <ul class="catalog-item">
+                <li class="catalog-item__nav">
+                    <a href="{% url 'products' %}" class="nav-item">Все категории</a>
+                </li>
+                    {% for category in categories %}
+                <li class="catalog-item__nav">
+                    <a href="{% url 'category' category.id %}" class="nav-item">{{ category.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+</div>

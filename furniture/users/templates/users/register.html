@@ -1,0 +1,49 @@
+{% extends 'products/base.html' %}
+{% load static %}
+  {% block content %}
+
+       <div class="signup-container">
+            <div class="signup-image"><img src="{% static 'img/SingUPPct.png' %}" alt=""></div>
+            <div class="signup-right">
+                <h1 class="signup-title">Создать аккаунт</h1>
+             <form action="{% url 'register' %}" method="post" class="signup-form">
+                 {% csrf_token %}
+                <div class="signup-form__section">
+                    <label for="{{ form.first_name.id_for_label }}" class="form-labell">Имя</label>
+                     {{ form.first_name }}
+                </div>
+                <div class="signup-form__section">
+                    <label for="{{ form.last_name.id_for_label }}" class="form-labell">Фамилия</label>
+                     {{ form.last_name }}
+                </div>
+                <div class="signup-form__section">
+                    <label for="{{ form.username.id_for_label }}" class="form-labell">Имя пользователя</label>
+                       {{ form.username }}
+                </div>
+                <div class="signup-form__section">
+                    <label for="{{ form.email.id_for_label }}" class="form-labell">Адрес электронной почты</label>
+                    {{ form.email }}
+                </div>
+                <div class="signup-form__section">
+                    <label for="{{ form.password1.id_for_label }}" class="form-labell">Пароль</label>
+                     {{ form.password1 }}
+                </div>
+                <div class="signup-form__section">
+                    <label for="{{ form.password2.id_for_label }}" class="form-labell">Подтверждение пароля</label>
+                     {{ form.password2 }}
+                </div>
+
+
+
+                <button type="submit" class="signup-button">Создать аккаунт</button>
+            </form>
+
+            <div class="line"></div>
+
+            <div class="signup-link"><a href="{% url 'login' %">Уже есть аккаунт? Авторизоваться</a></div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

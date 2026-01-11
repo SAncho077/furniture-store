@@ -1,0 +1,93 @@
+{% extends 'products/base.html' %}
+{% load static %}
+  {% block content %}
+
+  <section class="section">
+            <div class="rectangle">
+                <p class="text1">
+                    Мебель, которая вдохновляет жить красиво
+                </p>
+                <h4 class="description">
+                    Погрузитесь в нашу Эксклюзивную коллекцию
+                </h4>
+                <p class="text2">Откройте для себя коллекцию мебели, разработанную нашими дизайнерами с учетом последних
+                    тенденций и потребностей современной жизни</p>
+
+
+            </div>
+        </section>
+
+
+        <div class="line-center">
+            <div class="delivery-info">
+                <div class="info-item">
+                    <i class="fas fa-truck delivery-icon"></i>
+                    <span class="text">Бесплатная доставка</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock"></i>
+                    <span class="text">Поддержка 24/7</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-star"></i>
+                    <span class="text">Премиум качество</span>
+                </div>
+            </div>
+        </div>
+
+
+        <article class="article">
+            <div class="content-livingRoom">
+                <div class="livingRoom-img">
+                    <img src="{% static 'img/livingRoom.png' %}" alt="">
+                </div>
+                <div class="livingRoom-content">
+                    <h2 class="livingRoom-category">Мебель для спальни</h2>
+                    <p class="livingRoom-description">Создайте уютное пространство для встреч с близкими. Наша коллекция
+                        мебели для гостиной сочетает в себе элегантность, комфорт и функциональность, превращая вашу
+                        гостиную в сердце дома, где каждая деталь рассказывает вашу историю.</p>
+                    <div class="divider"><a href="{% url 'products' %}" class="read-more">Узнать больше</a></div>
+                </div>
+            </div>
+            <div class="content-dining">
+                <div class="dining-img">
+                    <img src="{% static 'img/dining.png' %}" alt="">
+                </div>
+                <div class="dining-content">
+                    <h2 class="dining-category">Модные обеденные столы</h2>
+                    <p class="dining-description">Наши обеденные столы — это не просто мебель, а произведения искусства
+                        для повседневной жизни. Подберите идеальный вариант: от скандинавской простоты до индустриальной
+                        брутальности, от компактных решений до роскошных моделей для больших пространств.</p>
+                    <div class="divider"><a href="{% url 'products' %}" class="read-more">Узнать больше</a></div>
+                </div>
+            </div>
+
+            <div class="content-livingRoom">
+                <div class="livingRoom-img">
+                    <img src="{% static 'img/bedroom.png' %}" alt="">
+                </div>
+                <div class="livingRoom-content">
+                    <h2 class="livingRoom-category">Современная кровать</h2>
+                    <p class="livingRoom-description">Стильное изголовье, современные материалы, внимание к деталям.
+                        Кровать, которая становится центральным элементом вашей спальни.</p>
+                    <div class="divider"><a href="{% url 'products' %}" class="read-more">Узнать больше</a></div>
+                </div>
+            </div>
+
+            <div class="content-dining">
+                <div class="dining-img">
+                    <img src="{% static 'img/kitchenRoom.png' %}" alt="">
+                </div>
+                <div class="dining-content">
+                    <h2 class="dining-category">Мебель для кухни</h2>
+                    <p class="dining-description">Искусство в деталях. Эксклюзивные кухонные гарнитуры, созданные в
+                        сотрудничестве с европейскими дизайнерами. От классических фасадов до ультрасовременных решений
+                        — каждая кухня становится произведением искусства.</p>
+                    <div class="divider"><a href="{% url 'products' %}" class="read-more">Узнать больше</a></div>
+                </div>
+            </div>
+
+        </article>
+
+
+{% endblock %}

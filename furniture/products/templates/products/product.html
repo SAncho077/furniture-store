@@ -1,0 +1,50 @@
+{% extends 'products/base.html' %}
+{% load static %}
+  {% block content %}
+
+    {% include 'products/category.html' %}
+
+        <div class="detail-container">
+            <div class="detail-row">
+                <div class="detail-photo">
+                    <img src="{{ product.image.url }}" alt="" class="big">
+                    <br>
+                    <div class="center">
+
+                         {% for img in product.photo_set.all %}
+
+                        <img src="{{ img.add_photo.url }}" alt="" class="small">
+
+                         {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <h1 class="title">{{ product.name }}</h1>
+                    <h4>{{ product.name }}</h4>
+
+                    <div class="dimensions-block">
+                        <span class="dim-label">Размеры:</span>
+                        <div class="dim-values">
+                            <span class="dim-value">Ш {{ product.width }}см</span>
+                            <span class="dim-sep">×</span>
+                            <span class="dim-value">В {{ product.height }}см</span>
+                            <span class="dim-sep">×</span>
+                            <span class="dim-value">Г {{ product.depth }}см</span>
+                        </div>
+                    </div>
+
+                    <h2 class="price">{{ product.price }} руб.</h2>
+                    <a href="{% url 'basket_add' product.id %}" class="detail-button">Отправить в корзину</a>
+                    <br><br>
+
+                    <h5 class="quantity">В наличии: {{ product.quantity }} шт.</h5>
+                    <div class="detail-description">
+                        {{ product.description|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}

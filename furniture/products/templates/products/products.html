@@ -1,0 +1,81 @@
+{% extends 'products/base.html' %}
+{% load static %}
+  {% block content %}
+
+    {% include 'products/category.html' %}
+<h1 class="catalog-title">{{ category.name }}</h1>
+
+            <div class="catalog-container">
+
+                {% for product in products %}
+                <a href="{% url 'product' product.id %}" class="catalog-card-next">
+                    <div class="catalog-card">
+                        <div class="catalog-card__image"><img src="{{ product.image.url }}" alt=""></div>
+                        <h2 class="{% url 'product' product.id %}">{{ product.name }}</h2>
+                        <div class="catalog-card__content">
+                            <div class="catalog-card__text">
+                                {{ product.short_description }}
+                            </div>
+
+                            <div class="dimensions-compact">
+                                <div class="dim-compact">
+                                    <span class="dim-letter">Ш</span>
+                                    <span class="dim-number">{{ product.width }}см</span>
+                                </div>
+                                <span class="dim-divider">×</span>
+                                <div class="dim-compact">
+                                    <span class="dim-letter">В</span>
+                                    <span class="dim-number">{{ product.height }}см</span>
+                                </div>
+                                <span class="dim-divider">×</span>
+                                <div class="dim-compact">
+                                    <span class="dim-letter">Г</span>
+                                    <span class="dim-number">{{ product.depth }}см</span>
+                                </div>
+                            </div>
+
+                            <div class="catalog-card__footer">
+                                <div class="catalog-card__price">{{ product.price }} руб</div>
+                                <div class="catalog-card__add-to-cart">
+                                    <a href="{% url 'basket_add' product.id %}" class="add-to-cart-btn">
+                                        Добавить в корзину
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+
+
+
+
+            </div>
+
+ {% if products %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {% if products.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{products.previous_page_number}}" tabindex="-1" aria-disabled="true">Предыдущая</a>
+                    </li>
+                    {% endif %}
+
+                    {% if products.has_other_pages %}
+                    {% for page in products.paginator.page_range %}
+                    <li class="page-item {% if page == products.number %} active {% endif %}"><a class="page-link" href="?page={{page}}">{{ page }}</a></li>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if products.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{products.next_page_number}}">Следующая</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+
+
+  {% endblock %}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="menu-bar">
+                <div class="container">
+                    <a href="{% url 'index' %}">
+                        <div class="logo-placeholder">FURNITURE</div>
+                    </a>
+                </div>
+                <a href="{% url 'index' %}">
+                    <div class="fa-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span>Home</span>
+                </a>
+                <a href="{% url 'products' %}">
+                    <div class="fa-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <span>Shop</span>
+                </a>
+                <a href="#">
+                    <div class="fa-icon">
+                        <i class="fas fa-blog"></i>
+                    </div>
+                    <span>Blog</span>
+                </a>
+                <a href="#">
+                    <div class="fa-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <span>About-us</span>
+                </a>
+                <a href="#">
+                    <div class="fa-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <span>Location</span>
+                </a>
+            </div>
+
+            <div class="top-nav">
+                <div class="top-nav__left">
+  {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">{{ user.username }}
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Выйти <i class="fas fa-sign-out-alt"></i></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Войти <i class="fas fa-sign-in-alt"></i></a>
+                </li>
+                {% endif %}
+                </div>
+            </div>
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
+</html>
