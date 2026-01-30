@@ -10,7 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+
+
 from pathlib import Path
+
+import os
+from dotenv import load_dotenv
+
+
+load_dotenv()  # Загружает переменные из .env файла
 
 
 
@@ -41,6 +49,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products.apps.ProductsConfig',
     'users.apps.UsersConfig',
+    'contact_app.apps.ContactAppConfig',
+    'event.apps.EventConfig',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +140,27 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+
+
+
+
+# Настройки email
+GMAIL_PASSWORD = os.getenv('GMAIL_PASSWORD')
+
+# 2. Проверяем пароль и выбираем бэкенд ДО настройки SMTP
+if GMAIL_PASSWORD:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+else:
+    print("⚠️  Пароль не найден! Письма будут в консоли")
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# 3. Остальные настройки (как у вас)
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sanjartilebaldiev00@gmail.com'
+EMAIL_HOST_PASSWORD = GMAIL_PASSWORD  # ← Используем переменную с паролем
+
+DEFAULT_FROM_EMAIL = 'sanjartilebaldiev00@gmail.com'
+CONTACT_EMAIL = 'sanjartilebaldiev00@gmail.com'

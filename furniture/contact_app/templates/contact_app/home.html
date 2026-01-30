@@ -1,0 +1,241 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="homePage">
+    <img class="homePage-img1" src="{% static 'img/home-page-img1.png' %}">
+
+    <div class="home-page-text1">
+        Компания «Бело Мебель» – занимается производством множества видов мебели с учетом индивидуальных пожеланий клиентов более 7 лет. <br><br>
+        Ежегодно мы делаем более 2 000 проектов мебели. Мы дорожим репутацией, поэтому в нашей команде работники имеют только высокую квалификацию.
+    </div>
+
+    <div class="home-page-slogan">Наш слоган: "Нас рекомендуют друзьям"</div>
+
+    <div class="arbel-page">
+        <h1 class="arbel-title">Наши преимущества</h1>
+
+        <p class="arbel-intro">
+            Мы занимаемся изготовлением для Вас кухонь и шкафов-купе любой сложности в Ярославле:
+        </p>
+
+        <div class="advantages">
+            <div class="advantage">
+                <div class="advantage-header">
+                    <div class="advantage-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="advantage-title">Высочайшее качество каждого заказа</h2>
+                </div>
+                <p class="advantage-text">Ваша кухня или шкаф будут приносить удовольствие от использования спустя года.</p>
+            </div>
+
+            <div class="advantage">
+                <div class="advantage-header">
+                    <div class="advantage-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h2 class="advantage-title">Самая надежная фурнитура</h2>
+                </div>
+                <p class="advantage-text">Blum, Hettich, Firmax, Gtv, Boyard с гарантией от 2 лет. Удобство пользования можно будет оценить даже через 5-10 лет.</p>
+            </div>
+
+            <div class="advantage">
+                <div class="advantage-header">
+                    <div class="advantage-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h2 class="advantage-title">Делаем индивидуально под каждого клиента</h2>
+                </div>
+                <p class="advantage-text">Наш результат – довольные клиенты. Об этом вы можете убедиться в отзывах.</p>
+            </div>
+
+            <div class="advantage simple">
+                <div class="advantage-header">
+                    <div class="advantage-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h2 class="advantage-title">Выезд дизайнера и составление проекта по Ярославлю - бесплатно</h2>
+                </div>
+            </div>
+
+            <div class="advantage simple">
+                <div class="advantage-header">
+                    <div class="advantage-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h2 class="advantage-title">Профессиональная сборка и установка</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция контактов -->
+    <div class="questions-section-home">
+        <div class="questions-container">
+            <h1 class="questions-title">Остались вопросы?</h1>
+            <h2 class="questions-subtitle">Задайте их нам!</h2>
+
+            <p class="questions-description">
+                Вы можете связаться с нашим менеджером по телефону или написать в мессенджеры.
+            </p>
+
+            <div class="phone-block">
+                <div class="phone-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <a href="tel:+79019431158" class="phone-number">+7 (901) 943-11-58</a>
+            </div>
+
+            <p class="alternative-text">
+                либо воспользоваться формой ниже и отправить нам вопрос на электронную почту.
+            </p>
+
+            <!-- Сообщения Django (ПЕРЕМЕЩЕНО НАД ФОРМОЙ) -->
+            {% if messages %}
+            <div class="messages-container">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {% if message.tags == 'success' %}
+                    <i class="fas fa-check-circle"></i>
+                    {% else %}
+                    <i class="fas fa-exclamation-circle"></i>
+                    {% endif %}
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Django форма -->
+            <form method="POST" action="{% url 'contact' %}" class="questions-form">
+                {% csrf_token %}
+
+                <!-- Отображение общих ошибок формы -->
+                {% if form.errors %}
+                <div class="form-errors">
+                    <div class="error-alert">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Пожалуйста, исправьте ошибки в форме:
+
+                        <!-- Детальные ошибки -->
+                        <ul class="error-details">
+                            {% for field_name, field_errors in form.errors.items %}
+                                {% for error in field_errors %}
+                                <li>
+                                    {% if field_name == 'name' %}
+                                    Имя: {{ error }}
+                                    {% elif field_name == 'phone' %}
+                                    Телефон: {{ error }}
+                                    {% elif field_name == 'question' %}
+                                    Вопрос: {{ error }}
+                                    {% elif field_name == 'agree_to_processing' %}
+                                    Согласие: {{ error }}
+                                    {% else %}
+                                    {{ field_name|title }}: {{ error }}
+                                    {% endif %}
+                                </li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Имя -->
+                <div class="questions-form-section">
+                    <h3 class="questions-form-section-title">
+                        <i class="fas fa-user form-title-icon"></i>
+                        Ваше имя
+                    </h3>
+                    <input type="text" name="name" class="questions-form-input"
+                           placeholder="Введите имя"
+                           value="{{ form.name.value|default:'' }}"
+                           required>
+                    {% if form.name.errors %}
+                    <div class="field-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {% for error in form.name.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Телефон -->
+                <div class="questions-form-section">
+                    <h3 class="questions-form-section-title">
+                        <i class="fas fa-mobile-alt form-title-icon"></i>
+                        Ваш телефон
+                    </h3>
+                    <input type="tel" name="phone" class="questions-form-input"
+                           placeholder="+7 900 555 77 88"
+                           value="{{ form.phone.value|default:'' }}"
+                           required>
+                    {% if form.phone.errors %}
+                    <div class="field-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {% for error in form.phone.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="questions-divider"></div>
+
+                <!-- Вопрос -->
+                <div class="questions-form-section">
+                    <h3 class="questions-form-section-title">
+                        <i class="fas fa-question-circle form-title-icon"></i>
+                        Какой у вас вопрос?
+                    </h3>
+                    <textarea name="question" class="questions-form-textarea"
+                              placeholder="Начните писать..."
+                              rows="4">{{ form.question.value|default:'' }}</textarea>
+                    {% if form.question.errors %}
+                    <div class="field-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {% for error in form.question.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="questions-divider"></div>
+
+                <!-- Согласие -->
+                <div class="agreement-block">
+                    <div class="warning-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <label class="agreement-label">
+                        <input type="checkbox" name="agree_to_processing"
+                               class="agreement-checkbox"
+                               {% if form.agree_to_processing.value %}checked{% endif %}
+                               required>
+                        <span class="agreement-text">
+                            Я даю свое согласие на обработку персональных данных, соглашаюсь с политикой
+                            обработки оператора.
+                        </span>
+                    </label>
+                    {% if form.agree_to_processing.errors %}
+                    <div class="checkbox-error">
+                        <i class="fas fa-exclamation-circle"></i>
+                        {% for error in form.agree_to_processing.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-paper-plane button-icon"></i>
+                    ОТПРАВИТЬ ВОПРОС
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

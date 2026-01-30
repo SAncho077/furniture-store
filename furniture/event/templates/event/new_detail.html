@@ -1,0 +1,23 @@
+{% extends 'products/base.html' %}
+{% load static %}
+  {% block content %}
+
+
+ <div class="event-detail">
+        <div class="event-detail-title">{{ new.title }}</div>
+
+        <div class="event-detail--meta">
+            <div class="event-detail--data">{{ new.published_date }}</div>
+            <div class="event-detail--time">{{ new.read_time }} мин</div>
+        </div>
+
+        <img class="event-detail--img" src="{{ new.image.url }}" alt="SEO-встреча">
+
+        <div class="event-detail--description">
+            {{ new.description }}
+        </div>
+    </div>
+
+
+
+{% endblock %}

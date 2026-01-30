@@ -11,7 +11,7 @@
                 <a href="{% url 'product' product.id %}" class="catalog-card-next">
                     <div class="catalog-card">
                         <div class="catalog-card__image"><img src="{{ product.image.url }}" alt=""></div>
-                        <h2 class="{% url 'product' product.id %}">{{ product.name }}</h2>
+                        <h2 class="catalog-card__title">{{ product.name }}</h2>
                         <div class="catalog-card__content">
                             <div class="catalog-card__text">
                                 {{ product.short_description }}
