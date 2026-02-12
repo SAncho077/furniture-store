@@ -1,5 +1,6 @@
 {% extends 'products/base.html' %}
 {% load static %}
+{% load humanize %}
   {% block content %}
 
     {% include 'products/category.html' %}
@@ -35,7 +36,7 @@
                             </div>
 
                             <div class="catalog-card__footer">
-                                <div class="catalog-card__price">{{ product.price }} руб</div>
+                                <div class="catalog-card__price">{{ product.price|intcomma }} руб</div>
                                 <div class="catalog-card__add-to-cart">
                                     <a href="{% url 'basket_add' product.id %}" class="add-to-cart-btn">
                                         Добавить в корзину

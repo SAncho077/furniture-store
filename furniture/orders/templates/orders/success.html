@@ -1,0 +1,93 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+          <div class="bg-pattern-orderSuccess">
+        <div class="bg-circle-1-orderSuccess"></div>
+        <div class="bg-circle-2-orderSuccess"></div>
+    </div>
+
+    <div class="thank-you-wrapper-orderSuccess">
+        <div class="main-thank-you-card-orderSuccess">
+            <!-- Декорации -->
+            <div class="card-decoration-orderSuccess">
+                <div class="decoration-line-orderSuccess line-1-orderSuccess"></div>
+                <div class="decoration-line-orderSuccess line-2-orderSuccess"></div>
+                <div class="corner-decoration-orderSuccess corner-tl-orderSuccess"></div>
+                <div class="corner-decoration-orderSuccess corner-tr-orderSuccess"></div>
+                <div class="corner-decoration-orderSuccess corner-bl-orderSuccess"></div>
+                <div class="corner-decoration-orderSuccess corner-br-orderSuccess"></div>
+            </div>
+
+            <!-- Иконка -->
+            <div class="icon-container-orderSuccess">
+                <div class="icon-circle-orderSuccess">
+                    <svg class="thank-you-icon-orderSuccess" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 12L11 14L15 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Основной текст -->
+            <h1 class="thank-you-title-orderSuccess animate-on-scroll-orderSuccess">
+                Спасибо за заказ!
+            </h1>
+
+            <p class="thank-you-subtitle-orderSuccess animate-on-scroll-orderSuccess">
+                Ваше доверие вдохновляет нас создавать лучшее.
+                Мы уже начали готовить ваш заказ к отправке.
+            </p>
+
+            <!-- Детали -->
+            <div class="details-section-orderSuccess">
+                <div class="detail-card-orderSuccess animate-on-scroll-orderSuccess">
+                    <div class="detail-icon-orderSuccess">
+                        <svg class="detail-icon-svg-orderSuccess" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title-orderSuccess">Персональный подход</h3>
+                    <p class="detail-text-orderSuccess">
+                        Каждый заказ обрабатывается индивидуально.
+                        Мы уделяем внимание всем деталям.
+                    </p>
+                </div>
+
+                <div class="detail-card-orderSuccess animate-on-scroll-orderSuccess">
+                    <div class="detail-icon-orderSuccess">
+                        <svg class="detail-icon-svg-orderSuccess" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title-orderSuccess">Гарантия качества</h3>
+                    <p class="detail-text-orderSuccess">
+                        Мы тщательно проверяем каждый товар перед отправкой.
+                        Ваше удовлетворение — наш приоритет.
+                    </p>
+                </div>
+
+                <div class="detail-card-orderSuccess animate-on-scroll-orderSuccess">
+                    <div class="detail-icon-orderSuccess">
+                        <svg class="detail-icon-svg-orderSuccess" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="detail-title-orderSuccess">Быстрая доставка</h3>
+                    <p class="detail-text-orderSuccess">
+                        Обычно мы отправляем заказы в течение 24 часов.
+                        Вы получите уведомление о статусе доставки.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="footer-thank-you-orderSuccess animate-on-scroll-orderSuccess">
+            © 2026 Ваш бренд. Все права защищены.
+        </div>
+    </div>
+
+{% endblock %}

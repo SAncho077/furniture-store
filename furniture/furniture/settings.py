@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'contact_app.apps.ContactAppConfig',
     'event.apps.EventConfig',
+    'orders.apps.OrdersConfig',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_processors.baskets',
             ],
         },
     },
