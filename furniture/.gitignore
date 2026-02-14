@@ -1,0 +1,22 @@
+# Файлы с переменными окружения
+.env
+.env.*
+!.env.example
+
+# База данных SQLite (обычно тоже игнорируют)
+db.sqlite3
+*.sqlite3
+
+# Виртуальное окружение Python (если есть)
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Медиа файлы (загруженные пользователями)
+/media/
+/mediafiles/
+
+# Файлы IDE (PyCharm)
+.idea/
+.vscode/
